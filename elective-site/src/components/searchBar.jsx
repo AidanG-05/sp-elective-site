@@ -5,8 +5,8 @@ function SearchBar() {
 
     return(
 
-        <div>
-            <input type="text" placeholder='Search...'/>
+        <div className="search-bar">
+            <input type="text" placeholder='Search by module code or name...'/>
             <button>Search</button>
         </div>
     );

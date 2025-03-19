@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body, html {
+  margin: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #fcfbf8;
+  
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full viewport height */
+  
+}
+
+.nav-container {
+  display:flex;
+  flex-direction:row;
+  justify-content:space-evenly;
+  align-items: center;
+  height:10%;
+  padding: 10px;
+  margin-top: 50px
+}
+
+.button-container {
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: center;
+  height: 10%;
+  border-top: 2px solid black;
+  align-items: center;
+}
+
+.hamburger {
+ margin-left: 20px;
+}
+
+.search-bar {
+  display: flex;
+  width:40%;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* Adds spacing between input and button */
+  padding: 10px;
+  border-radius: 8px;
+  margin: 0 auto;
+  max-width: 600px; 
+  min-width: 250px;
+}
+
+.search-bar input {
+  flex:1;
+  padding: 8px 12px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  font-size: 16px;
+  transition: border-color 0.s ease;
+  font-family:'Poppins'
+}
+
+.search-bar input:focus {
+  border-color: #007bff;
+}
+
+.search-bar button {
+  padding: 8px 16px;
+  border: none;
+  background-color: #669bbc;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  white-space: nowrap;
+  font-family:'Poppins'
+}
+
+.search-bar button:hover {
+  background-color: #003049;
+}
+
+.log-in {
+  padding:8px 16px;
+  border: none;
+  background-color: #669bbc;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  white-space: nowrap;
+  font-family:'Poppins';
+  margin-right:25px;
+}
+
+.log-in:hover {
+  background-color: #003049;
+}
+
+.main-button {
+  padding:8px 16px;
+  border: none;
+  background-color: #669bbc;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  white-space: nowrap;
+  font-family:'Poppins';
+  margin-right:25px;
+}
+
+.main-button:hover {
+  background-color: #003049;
+}
+
+footer {
+  font-family: 'Poppins';
+}
