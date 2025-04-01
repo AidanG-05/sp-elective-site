@@ -8,6 +8,7 @@ import Hamburger from "./components/hamburger";
 import Title from "./components/title";
 import ModuleCard from "./components/moduleCard";
 import SearchResults from "./SearchResults";
+import ModuleList from "./moduleList";
 
 // Home component renders the main UI
 function Home() {
@@ -24,7 +25,7 @@ function Home() {
       </div>
 
       <div className="button-container">
-        <MainButton title="Head to Library" />
+        <MainButton title="Head to Library" navigateTo="/library"/>
         <MainButton title="Leave a Review" />
       </div>
 
@@ -40,8 +41,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* When the user searches, navigate to /results */}
         <Route path="/results" element={<SearchResults />} />
+        <Route path="/library" element={<ModuleList></ModuleList>} />
       </Routes>
     </Router>
   );

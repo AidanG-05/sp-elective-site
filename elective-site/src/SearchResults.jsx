@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import ModuleCard from "./components/moduleCard";
 
+
 function SearchResults() {
   const [results, setResults] = useState([]);
   const location = useLocation();
@@ -21,7 +22,7 @@ function SearchResults() {
   return (
     <div className="search-results">
       <h1>Search Results for "{searchTerm}"</h1>
-      <div className="results-container">
+      <div className="module-container">
         {results.length > 0 ? (
           results.map((module, index) => (
             <ModuleCard key={index} module={module} />

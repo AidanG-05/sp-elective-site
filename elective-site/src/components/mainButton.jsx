@@ -1,8 +1,20 @@
+import { useNavigate } from "react-router-dom";
 
-function MainButton(props) {
+
+
+function MainButton({title, navigateTo}) {
+
+    const navigate = useNavigate();
+
+    function handleClick() {
+        if(navigateTo) {
+            navigate(navigateTo)
+        }
+    }
+
 
     return(
-        <button className="main-button">{props.title}</button>
+        <button className="main-button" onClick={handleClick}>{title}</button>
     );
 }
 

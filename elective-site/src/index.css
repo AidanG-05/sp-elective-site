@@ -146,6 +146,42 @@ footer {
   font-family: 'Poppins';
 }
 
+.module-container {
+  display: flex;
+  flex-wrap: wrap; /* Allows multiple rows */
+  justify-content: center; /* Center the cards */
+  gap: 16px; /* Adds space between cards */
+  padding: 20px;
+}
+
 .module-card {
-  border: 2px solid black
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 280px; /* Adjust width for a rectangular shape */
+  height: 180px;
+  background-color: white;
+  border-radius: 12px; /* Smooth rounded corners */
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  padding: 20px;
+  text-align: center;
+  font-family:'Poppins';
+}
+
+.module-card h1 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.module-card h2 {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.module-card:hover {
+  transform: translateY(-5px); /* Slight lift effect */
+  box-shadow: 4px 8px 20px rgba(0, 0, 0, 0.2); /* More prominent shadow */
 }
