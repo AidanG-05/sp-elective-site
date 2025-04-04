@@ -9,6 +9,7 @@ import Title from "./components/title";
 import ModuleCard from "./components/moduleCard";
 import SearchResults from "./SearchResults";
 import ModuleList from "./moduleList";
+import ModuleInfo from "./ModuleInfo";
 
 // Home component renders the main UI
 function Home() {
@@ -43,6 +44,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/results" element={<SearchResults />} />
         <Route path="/library" element={<ModuleList></ModuleList>} />
+        <Route path="/modules/:module_code" element={<ModuleInfo />} />
       </Routes>
     </Router>
   );

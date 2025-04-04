@@ -185,3 +185,80 @@ footer {
   transform: translateY(-5px); /* Slight lift effect */
   box-shadow: 4px 8px 20px rgba(0, 0, 0, 0.2); /* More prominent shadow */
 }
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 1400px;
+  margin: 50px auto;
+  font-family: 'Poppins', sans-serif;
+}
+
+.module-details {
+  width: 100%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Poppins', sans-serif;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.module-details h1 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.module-details h2 {
+  font-size: 1.5rem;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.module-details p {
+  font-size: 1.2rem;
+  color: #444;
+  line-height: 1.5;
+  margin-top: 10px;
+}
+
+.reviews-container {
+  width: 100%;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  margin-bottom: 50px;
+}
+
+.reviews-container h2 {
+  font-size: 1.8rem;
+  color: #222;
+  margin-bottom: 15px;
+}
+
+.review-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 15px;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+  border-left: 5px solid #007bff;
+}
+
+.review-card h3 {
+  font-size: 1.3rem;
+  color: #007bff;
+  margin-bottom: 5px;
+}
+
+.review-card p {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.4;
+}
