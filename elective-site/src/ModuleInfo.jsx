@@ -1,12 +1,14 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import ReviewCard from "./components/reviewCard";
+import ReviewModal from "./components/reviewModel";
 
 function ModuleDetails() {
     // Get module code from URL
     const { module_code } = useParams(); 
     const [module, setModule] = useState();
     const [reviews, setReviews] = useState([]);
+    const [selectedReview, setSelectedReview] = useState(null);
 
     useEffect(() => {
         console.log("Fetching module for:", module_code);
@@ -44,12 +46,14 @@ function ModuleDetails() {
                 <h2>Reviews</h2>
                 {reviews.length > 0 ? (
                     reviews.map((review) => (
-                        <ReviewCard key={review.id} review={review} />
+                        <ReviewCard key={review.id} review={review} onClick={setSelectedReview}/>
                     ))
                 ) : (
                     <p>No reviews yet.</p>
                 )}
             </div>
+             {/* Modal */}
+             <ReviewModal review={selectedReview} onClose={() => setSelectedReview(null)} />
         </div>
     );
 }

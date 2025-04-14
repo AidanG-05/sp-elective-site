@@ -249,6 +249,9 @@ footer {
   margin-bottom: 15px;
   box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
   border-left: 5px solid #007bff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .review-card h3 {
@@ -261,4 +264,71 @@ footer {
   font-size: 1rem;
   color: #333;
   line-height: 1.4;
+}
+
+.show-more-bar {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -30px;
+  width: 30%;
+  background-color: #eef4fb;
+  color: #007bff; 
+  text-align: center;
+  padding: 6px 0; 
+  font-weight: 500;
+  font-size: 0.9rem;
+  border-radius: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: bottom 0.3s ease, opacity 0.3s ease;
+  cursor: pointer;
+  opacity: 0.95;
+}
+
+.review-card:hover .show-more-bar {
+  bottom: 0;
+}
+
+.show-more-icon {
+  display: inline-block;
+  transition: transform 0.3s ease-in-out;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%; 
+  max-width: 900px;
+  position: relative;
+  border-left: 5px solid #007bff;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modal-close {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.modal-content h3 {
+  font-size: 1.3rem;
+  color: #007bff;
+  margin-bottom: 5px;
 }
