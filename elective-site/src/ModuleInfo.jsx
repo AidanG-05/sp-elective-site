@@ -1,7 +1,9 @@
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import ReviewCard from "./components/reviewCard";
 import ReviewModal from "./components/reviewModel";
+import MainButton from "./components/mainButton";
 
 function ModuleDetails() {
     // Get module code from URL
@@ -39,6 +41,9 @@ function ModuleDetails() {
                 <h2>{module.module_code}</h2>
                 <p><strong>Eligibility:</strong> {module.eligibility}</p>
                 <p><strong>Duration:</strong> {module.duration}</p>
+                <div className="review-button-wrapper">
+                    <MainButton title="Review 📝" navigateTo="/review"/>
+                </div>
             </div>
 
             {/* Reviews section */}

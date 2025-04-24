@@ -13,8 +13,8 @@ function ReviewModal({ review, onClose }) {
                 <p><strong>Rating:</strong> {review.Ratings} / 5</p>
                 <p><strong>Reason for the rating:</strong><br></br> {review.Rating_Reason}</p>
                 <p><strong>Key takeaways from experiences, including projects and topics explored or completed:</strong><br></br> {review.TLDR_experiences}</p>
-                <p><strong>Assignment Review:</strong><br></br> {review.Assignment_Review}</p>
-                <p><strong>Assignment Weightage:</strong><br></br> {review.Assignment_Weightage}</p>
+                <p><strong>Assessment Weightage:</strong><br></br> {review.Assignment_Weightage}</p>
+                <p><strong>Assessment Review:</strong><br></br> {review.Assignment_Review}</p>
                 <p><strong>Tips & Tricks:</strong><br></br> {review.Life_Hacks}</p>
             </div>
         </div>
