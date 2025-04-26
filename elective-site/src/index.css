@@ -594,8 +594,8 @@ footer {
 
 @media (max-width: 768px) {
   .hamburger-button {
-    margin-right: 1%;
-    margin-left: 0px  /* Ensure there's space between the button and the sidebar */
+    margin: 0;
+    align-self: flex-start;
   }
 
   .sidebar {
@@ -607,9 +607,14 @@ footer {
   }
 
   .nav-container {
-    display: flex;
-    align-items: center;
-    gap: 10px; /* adds space between burger and search */
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 10px 20px;
+  }
+
+  .search-bar {
+    width: 100%;
+    justify-content: center;
   }
 
   
