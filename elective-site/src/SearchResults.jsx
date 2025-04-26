@@ -13,7 +13,7 @@ function SearchResults() {
     if (!searchTerm) return;
 
     // Fetch matching modules from your backend
-    fetch(`http://localhost:5001/modules/search?q=${encodeURIComponent(searchTerm)}`)
+    fetch(`https://sp-elective-site-backend-production.up.railway.app/modules/search?q=${encodeURIComponent(searchTerm)}`)
       .then((res) => res.json())
       .then((data) => setResults(data))
       .catch((err) => console.error("Error fetching search results:", err));

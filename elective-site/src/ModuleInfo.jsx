@@ -14,7 +14,7 @@ function ModuleDetails() {
 
     useEffect(() => {
         console.log("Fetching module for:", module_code);
-        fetch(`http://localhost:5001/modules/${module_code}`)
+        fetch(`https://sp-elective-site-backend-production.up.railway.app/modules/${module_code}`)
             .then((res) => res.json())
             .then((data) => {
                 console.log("Fetched data:", data);
@@ -22,7 +22,7 @@ function ModuleDetails() {
             })
             .catch((err) => console.error("Error fetching module details:", err));
 
-        fetch(`http://localhost:5001/modules/${module_code}/reviews`)
+        fetch(`https://sp-elective-site-backend-production.up.railway.app/modules/${module_code}/reviews`)
             .then((res) => res.json())
             .then((data) => {
                 console.log("Fetched reviews:", data);

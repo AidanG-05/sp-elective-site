@@ -30,7 +30,7 @@ function ReviewForm() {
   };
 
   useEffect(() => {
-    fetch('http://localhost:5001/modules/all')
+    fetch('https://sp-elective-site-backend-production.up.railway.app//modules/all')
       .then(res => res.json())
       .then(data => setModules(data))
       .catch(err => console.error('Error fetching modules:', err));
@@ -77,7 +77,7 @@ function ReviewForm() {
       Elective_Module: selectedModule.module_name
     };
 
-    fetch(`http://localhost:5001/review/submission`, {
+    fetch(`https://sp-elective-site-backend-production.up.railway.app/review/submission`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)

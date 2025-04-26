@@ -5,7 +5,7 @@ function ModuleList() {
     const [modules, setModules] = useState([]); // State for storing modules
 
     useEffect(() => {
-        fetch("http://localhost:5001/modules/all") // Fetch from backend
+        fetch("https://sp-elective-site-backend-production.up.railway.app/modules/all") // Fetch from backend
             .then((res) => res.json())
             .then((data) => setModules(data)) // Store modules in state
             .catch((err) => console.error("Error fetching modules:", err));
