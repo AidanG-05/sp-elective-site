@@ -30,7 +30,7 @@ function ReviewForm() {
   };
 
   useEffect(() => {
-    fetch('https://sp-elective-site-backend-production.up.railway.app//modules/all')
+    fetch('https://sp-elective-site-backend-production.up.railway.app/modules/all')
       .then(res => res.json())
       .then(data => setModules(data))
       .catch(err => console.error('Error fetching modules:', err));
