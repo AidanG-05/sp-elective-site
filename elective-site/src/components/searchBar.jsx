@@ -19,7 +19,7 @@ function SearchBar() {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
-      <button onClick={handleSearch}>Search</button>
+      <button onClick={handleSearch}>🔍</button>
     </div>
   );
 }
