@@ -20,7 +20,6 @@ function Home() {
       <div className="nav-container">
         <Hamburger />
         <SearchBar />
-        <LoginButton />
       </div>
 
       <div className="title-container">

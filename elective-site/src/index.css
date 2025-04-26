@@ -16,10 +16,100 @@ body, html {
   
 }
 
+/* Button styling */
+.hamburger-button {
+  top: 16px;
+  left: 16px;
+  z-index: 90;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  margin-top: 0px;
+  margin-left: 20px
+}
+
+/* Hamburger lines */
+.hamburger-lines span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px 0;
+  background-color: black;
+  transition: 0.3s;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #fcfbf8;
+  box-shadow: 2px 0 12px rgba(0, 0, 0, 0.2);
+  padding-top: 60px;
+  transition: left 0.3s ease;
+  z-index: 100;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center horizontally */
+}
+
+/* Sidebar open */
+.sidebar.open {
+  left: 0;
+}
+
+/* Sidebar close button */
+.close-button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Sidebar menu */
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  text-align: center; /* center the text */
+}
+
+.sidebar li {
+  font-family: Poppins;
+  padding: 20px 0;
+  font-size: 20px; /* bigger font */
+  cursor: pointer;
+}
+
+.sidebar li:hover {
+  background-color: #f0f0f0;
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 90;
+}
+
+
+
 .nav-container {
   display:flex;
   flex-direction:row;
-  justify-content:space-evenly;
+  justify-content:space-between;
   align-items: center;
   height:20%;
   padding: 10px;
@@ -49,10 +139,6 @@ body, html {
   align-items: center;
 }
 
-.hamburger {
- margin-left: 20px;
-}
-
 .search-bar {
   display: flex;
   width:50%;
@@ -63,7 +149,7 @@ body, html {
   border-radius: 8px;
   margin: 0 auto;
   max-width: 800px; 
-  min-width: 250px;
+  min-width: 200px;
 }
 
 .search-bar input {
@@ -98,30 +184,15 @@ body, html {
   background-color: #003049;
 }
 
-.log-in {
-  padding:8px 16px;
-  border: none;
-  background-color: #669bbc;
-  color: white;
-  font-size: 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-  white-space: nowrap;
-  font-family:'Poppins';
-  margin-right:25px;
-}
-
-.log-in:hover {
-  background-color: #003049;
-}
-
 .title {
   margin-top:50px;
   font-family:'Poppins';
   font-size: 60px;
+  text-align: center;
   color: #df817a;
 }
+
+
 
 .main-button {
   padding:8px 16px;
@@ -175,6 +246,7 @@ footer {
   color: #333;
   margin-bottom: 8px;
 }
+
 
 .module-card h2 {
   font-size: 1.2rem;
@@ -510,4 +582,27 @@ footer {
   border-radius: 1rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   text-align: center;
+}
+
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+  .hamburger-button {
+    margin-right: 1%;
+    margin-left: -5px  /* Ensure there's space between the button and the sidebar */
+  }
+
+  .sidebar {
+    width: 200px;  /* Optionally reduce the sidebar width for mobile */
+  }
+
+  .sidebar.open {
+    left: 0;
+  }
 }

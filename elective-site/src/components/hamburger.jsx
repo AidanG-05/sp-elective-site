@@ -1,12 +1,35 @@
 import { useState } from "react";
 
-
 function Hamburger() {
+  const [isOpen, setIsOpen] = useState(false);
 
-    return (
-        <button className="hamburger">burger</button>
-      );
+  const toggleMenu = () => setIsOpen(!isOpen);
+
+  return (
+    <>
+      {/* Hamburger Button */}
+      <button className="hamburger-button" onClick={toggleMenu}>
+        <div className="hamburger-lines">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </button>
+
+      {/* Sidebar */}
+      <div className={`sidebar ${isOpen ? "open" : ""}`}>
+        <ul>
+          <li>Home</li>
+          <li>About</li>
+          <li>Services</li>
+          <li>Contact</li>
+        </ul>
+      </div>
+
+      {/* Overlay when sidebar open */}
+      {isOpen && <div className="overlay" onClick={toggleMenu}></div>}
+    </>
+  );
 }
 
-
-export default Hamburger
+export default Hamburger;
