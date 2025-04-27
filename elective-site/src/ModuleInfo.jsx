@@ -5,6 +5,7 @@ import ReviewCard from "./components/reviewCard";
 import ReviewModal from "./components/reviewModel";
 import MainButton from "./components/mainButton";
 
+
 function ModuleDetails() {
     // Get module code from URL
     const { module_code } = useParams(); 

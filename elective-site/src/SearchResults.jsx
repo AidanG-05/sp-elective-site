@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import ModuleCard from "./components/moduleCard";
+import Hamburger from "./components/hamburger";
+import SearchBar from "./components/searchBar";
 
 
 function SearchResults() {
@@ -20,8 +22,13 @@ function SearchResults() {
   }, [searchTerm]);
 
   return (
+    <>
+    <div className="nav-container">
+      <Hamburger />
+      <SearchBar />
+    </div>
     <div className="search-results">
-      <h1>Search Results for "{searchTerm}"</h1>
+      <h1 className="centered-text">Search Results for "{searchTerm}"</h1>
       <div className="module-container">
         {results.length > 0 ? (
           results.map((module, index) => (
@@ -32,6 +39,7 @@ function SearchResults() {
         )}
       </div>
     </div>
+    </>
   );
 }
 

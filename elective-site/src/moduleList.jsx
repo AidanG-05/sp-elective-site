@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import ModuleCard from "./components/moduleCard";
+import Hamburger from "./components/hamburger";
+import SearchBar from "./components/searchBar";
 
 function ModuleList() {
     const [modules, setModules] = useState([]); // State for storing modules
@@ -12,8 +14,13 @@ function ModuleList() {
     }, []);
 
     return (
+        <>
+        <div className="nav-container">
+            <Hamburger />
+            <SearchBar />
+        </div>
         <div className="module-list">
-            <h1>All Modules</h1>
+            <h1 className="centered-text">All Modules</h1>
             <div className="module-container">
                 {modules.length > 0 ? (
                     modules.map((module, index) => (
@@ -24,6 +31,7 @@ function ModuleList() {
                 )}
             </div>
         </div>
+        </>
     );
 }
 

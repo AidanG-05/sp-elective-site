@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom"; 
 
 function Hamburger() {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,10 +20,10 @@ function Hamburger() {
       {/* Sidebar */}
       <div className={`sidebar ${isOpen ? "open" : ""}`}>
         <ul>
-          <li>Home</li>
-          <li>Library</li>
-          <li>Review Request</li>
-          <li>FAQ</li>
+          <li><Link to="/" onClick={toggleMenu}>Home</Link></li>
+          <li><Link to="/library" onClick={toggleMenu}>Library</Link></li>
+          <li><Link to="/review" onClick={toggleMenu}>Review Request</Link></li>
+          <li><Link to="/faq" onClick={toggleMenu}>FAQ</Link></li>
         </ul>
       </div>
 
