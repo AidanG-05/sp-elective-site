@@ -1,6 +1,6 @@
 {
-    "github": {
-      "autoJobCancellation": false
+    "git": {
+      "deploymentEnabled": false
     }
   }
   

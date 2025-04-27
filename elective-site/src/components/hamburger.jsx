@@ -20,9 +20,9 @@ function Hamburger() {
       <div className={`sidebar ${isOpen ? "open" : ""}`}>
         <ul>
           <li>Home</li>
-          <li>About</li>
-          <li>Services</li>
-          <li>Contact</li>
+          <li>Library</li>
+          <li>Review Request</li>
+          <li>FAQ</li>
         </ul>
       </div>
 
