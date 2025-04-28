@@ -60,19 +60,11 @@ function Home() {
 }
 
 function App() {
-  const location = useLocation();
-
-  useEffect(() => {
-    // Send pageview event to Google Analytics whenever the location changes
-    if (window.gtag) {
-      window.gtag('config', 'G-TY9WW2EH3P', {
-        page_path: location.pathname,
-      });
-    }
-  }, [location]); // This effect will run whenever the location changes
-
   return (
     <Router>
+      {/* This will ensure useLocation() is only called after Router is initialized */}
+      <PageViewTracker />
+      
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/results" element={<SearchResults />} />
@@ -84,6 +76,21 @@ function App() {
       </Routes>
     </Router>
   );
+}
+
+function PageViewTracker() {
+  const location = useLocation();
+
+  useEffect(() => {
+    // Send pageview event to Google Analytics whenever the location changes
+    if (window.gtag) {
+      window.gtag('config', 'G-TY9WW2EH3P', {
+        page_path: location.pathname,
+      });
+    }
+  }, [location]); // This effect will run whenever the location changes
+
+  return null; // This component doesn't render anything, it just tracks page views
 }
 
 export default App;
