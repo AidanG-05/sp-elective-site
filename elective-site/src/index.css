@@ -189,7 +189,7 @@ body, html {
   font-family:'Poppins';
   font-size: 60px;
   text-align: center;
-  color: #df817a;
+  color: #e34066;
 }
 
 
@@ -599,7 +599,11 @@ a:visited {
   color: inherit;
 }
 
-
+.faq-title {
+  text-align: center;
+  font-family: Poppins;
+  font-size: 80px;
+}
 
 
 

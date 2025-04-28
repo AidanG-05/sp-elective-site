@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import ReviewCard from "./components/reviewCard";
 import ReviewModal from "./components/reviewModel";
 import MainButton from "./components/mainButton";
-
+import Hamburger from "./components/hamburger";
+import SearchBar from "./components/searchBar";
 
 function ModuleDetails() {
     // Get module code from URL
@@ -35,6 +36,11 @@ function ModuleDetails() {
     if (!module || Object.keys(module).length === 0) return <p>No module details found.</p>;
 
     return (
+        <>
+        <div className="nav-container">
+            <Hamburger />
+            <SearchBar />
+        </div>
         <div className="page-container">
             {/* Module info */}
             <div className="module-details">
@@ -61,6 +67,7 @@ function ModuleDetails() {
              {/* Modal */}
              <ReviewModal review={selectedReview} onClose={() => setSelectedReview(null)} />
         </div>
+        </>
     );
 }
 

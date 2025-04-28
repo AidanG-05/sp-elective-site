@@ -22,7 +22,7 @@ function Hamburger() {
         <ul>
           <li><Link to="/" onClick={toggleMenu}>Home</Link></li>
           <li><Link to="/library" onClick={toggleMenu}>Library</Link></li>
-          <li><Link to="/review" onClick={toggleMenu}>Review Request</Link></li>
+          <li><Link to="/" onClick={toggleMenu}>Review Request</Link></li>
           <li><Link to="/faq" onClick={toggleMenu}>FAQ</Link></li>
         </ul>
       </div>

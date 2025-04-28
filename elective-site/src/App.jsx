@@ -12,6 +12,7 @@ import ModuleList from "./moduleList";
 import ModuleInfo from "./ModuleInfo";
 import ReviewForm from "./reviewForm";
 import ThankYouPage from "./ThankYouPage";
+import FAQ from "./faq";
 
 // Home component renders the main UI
 function Home() {
@@ -48,6 +49,7 @@ function App() {
         <Route path="/modules/:module_code" element={<ModuleInfo />} />
         <Route path="/review" element={<ReviewForm />}/>
         <Route path="/thankyou" element={<ThankYouPage />}/>
+        <Route path="/faq" element={<FAQ />}/>
       </Routes>
     </Router>
   );
