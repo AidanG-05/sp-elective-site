@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import "./App.css";
 import SearchBar from "./components/searchBar";
 import MainButton from "./components/mainButton";
@@ -27,30 +28,29 @@ function Home() {
       </div>
 
       <div className="split-container">
-  <div className="left-side">
-    <div className="button-group">
-      <div className="button-section">
-        <h1>Discover and Choose Your Perfect Elective.</h1>
-        <p>Explore past elective reviews and find out what others are saying!</p>
-        <MainButton title="Head to Library" navigateTo="/library" />
-      </div>
-      <div className="button-section">
-        <h1>Write a Review Now.</h1>
-        <p>Share your experience and help your juniors choose better electives!</p>
-        <MainButton title="Leave a Review" navigateTo="/review" />
-      </div>
-    </div>
-  </div>
+        <div className="left-side">
+          <div className="button-group">
+            <div className="button-section">
+              <h1>Discover and Choose Your Perfect Elective.</h1>
+              <p>Explore past elective reviews and find out what others are saying!</p>
+              <MainButton title="Head to Library" navigateTo="/library" />
+            </div>
+            <div className="button-section">
+              <h1>Write a Review Now.</h1>
+              <p>Share your experience and help your juniors choose better electives!</p>
+              <MainButton title="Leave a Review" navigateTo="/review" />
+            </div>
+          </div>
+        </div>
 
-  <div className="right-side">
-    <div className="notice-board">
-      <h2>Notice Board</h2>
-      <p>📝 Cureently Under Construction</p>
-      <p>📢 Please Stay Tuned!</p>
-    </div>
-  </div>
-</div>
-
+        <div className="right-side">
+          <div className="notice-board">
+            <h2>Notice Board</h2>
+            <p>📝 Currently Under Construction</p>
+            <p>📢 Please Stay Tuned!</p>
+          </div>
+        </div>
+      </div>
 
       <div className="footer-container">
         <Footer />
@@ -60,16 +60,27 @@ function Home() {
 }
 
 function App() {
+  const location = useLocation();
+
+  useEffect(() => {
+    // Send pageview event to Google Analytics whenever the location changes
+    if (window.gtag) {
+      window.gtag('config', 'G-TY9WW2EH3P', {
+        page_path: location.pathname,
+      });
+    }
+  }, [location]); // This effect will run whenever the location changes
+
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/results" element={<SearchResults />} />
-        <Route path="/library" element={<ModuleList/>} />
+        <Route path="/library" element={<ModuleList />} />
         <Route path="/modules/:module_code" element={<ModuleInfo />} />
-        <Route path="/review" element={<ReviewForm />}/>
-        <Route path="/thankyou" element={<ThankYouPage />}/>
-        <Route path="/faq" element={<FAQ />}/>
+        <Route path="/review" element={<ReviewForm />} />
+        <Route path="/thankyou" element={<ThankYouPage />} />
+        <Route path="/faq" element={<FAQ />} />
       </Routes>
     </Router>
   );
