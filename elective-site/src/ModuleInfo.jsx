@@ -6,6 +6,7 @@ import ReviewModal from "./components/reviewModel";
 import MainButton from "./components/mainButton";
 import Hamburger from "./components/hamburger";
 import SearchBar from "./components/searchBar";
+import ClickButton from "./components/clickButton";
 
 function ModuleDetails() {
     // Get module code from URL
@@ -49,7 +50,7 @@ function ModuleDetails() {
                 <p><strong>Eligibility:</strong> {module.eligibility}</p>
                 <p><strong>Duration:</strong> {module.duration}</p>
                 <div className="review-button-wrapper">
-                    <MainButton title="Review 📝" navigateTo="/review"/>
+                    <ClickButton title="Review 📝" navigateTo="/review"/>
                 </div>
             </div>
 

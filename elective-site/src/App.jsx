@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import SearchBar from "./components/searchBar";
 import MainButton from "./components/mainButton";
-import LoginButton from "./components/loginButton";
 import Footer from "./components/footer";
 import Hamburger from "./components/hamburger";
 import Title from "./components/title";
@@ -27,10 +26,31 @@ function Home() {
         <Title />
       </div>
 
-      <div className="button-container">
-        <MainButton title="Head to Library" navigateTo="/library"/>
-        <MainButton title="Leave a Review" navigateTo="/review"/>
+      <div className="split-container">
+  <div className="left-side">
+    <div className="button-group">
+      <div className="button-section">
+        <h1>Discover and Choose Your Perfect Elective.</h1>
+        <p>Explore past elective reviews and find out what others are saying!</p>
+        <MainButton title="Head to Library" navigateTo="/library" />
       </div>
+      <div className="button-section">
+        <h1>Write a Review Now.</h1>
+        <p>Share your experience and help your juniors choose better electives!</p>
+        <MainButton title="Leave a Review" navigateTo="/review" />
+      </div>
+    </div>
+  </div>
+
+  <div className="right-side">
+    <div className="notice-board">
+      <h2>Notice Board</h2>
+      <p>📝 Cureently Under Construction</p>
+      <p>📢 Please Stay Tuned!</p>
+    </div>
+  </div>
+</div>
+
 
       <div className="footer-container">
         <Footer />
