@@ -729,12 +729,12 @@ a:visited {
   }
 
   .searchbar-container {
-    width: 100%;
+    width: 80%;
     justify-content: center;
   }
 
   .search-bar {
-    width: 90%;
+    width: 80%;
     max-width: 100%;
   }
 }
