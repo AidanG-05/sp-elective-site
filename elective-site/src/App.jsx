@@ -21,7 +21,6 @@ function Home() {
   return (
     <>
       <div className="nav-container">
-        <Hamburger />
         <SearchBar />
       </div>
 
