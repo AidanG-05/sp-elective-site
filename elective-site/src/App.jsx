@@ -16,6 +16,8 @@ import FAQ from "./faq";
 
 // Home component renders the main UI
 function Home() {
+
+  const feedbackForm = <a href="https://docs.google.com/forms/d/e/1FAIpQLScHg9gzqM4gAj1GHQUvyW7Wsrl0GcTtSI2ZXoSFa5kaw_KHNQ/viewform?usp=dialog" style={{ color: '#e34066', fontWeight:'bold', textDecoration: 'underline'}}>Here</a>
   return (
     <>
       <div className="nav-container">
@@ -47,7 +49,7 @@ function Home() {
           <div className="notice-board">
             <h2>Notice Board</h2>
             <p>📝 Currently Under Construction</p>
-            <p>📢 Please Stay Tuned!</p>
+            <p>📢 Please give us your feedback {feedbackForm}</p>
           </div>
         </div>
       </div>

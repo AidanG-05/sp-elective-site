@@ -150,6 +150,7 @@ body, html {
   height: 90px; 
   border-top: 1px solid #ccc;
   padding:15px;
+  margin-top:30px
 }
 
 .search-bar {
@@ -676,7 +677,17 @@ a:visited {
 .faq-title {
   text-align: center;
   font-family: Poppins;
-  font-size: 80px;
+  font-size: 70px;
+  margin: 80px;
+}
+
+.faq-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto; /* center horizontally */
+  padding: 0 1rem; /* optional small padding on sides */
 }
 
 
