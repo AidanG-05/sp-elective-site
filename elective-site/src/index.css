@@ -708,7 +708,7 @@ a:visited {
 
   .left-side,
   .right-side {
-    width: 90%;
+    width: 100%;
     padding: 15px;
   }
 
@@ -717,7 +717,7 @@ a:visited {
   }
 
   .notice-board {
-    width: 90%;
+    width: 100%;
   }
 
   .nav-header {
