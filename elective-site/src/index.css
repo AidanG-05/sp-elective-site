@@ -125,8 +125,6 @@ body, html {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 15px;
-  gap: 10px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -727,5 +725,13 @@ a:visited {
   .nav-header {
     flex-direction:row;
     justify-content:space-between;
+  }
+  
+  .searchbar-container {
+    width: 100%;
+  }
+
+  .hamburger-container {
+    flex-direction:row;
   }
 }
