@@ -20,10 +20,10 @@ function Hamburger() {
       {/* Sidebar */}
       <div className={`sidebar ${isOpen ? "open" : ""}`}>
         <ul>
-          <li><Link to="/" onClick={toggleMenu}>Home</Link></li>
-          <li><Link to="/library" onClick={toggleMenu}>Library</Link></li>
-          <li><Link to="/" onClick={toggleMenu}>Review Request</Link></li>
-          <li><Link to="/faq" onClick={toggleMenu}>FAQ</Link></li>
+          <Link to="/" onClick={toggleMenu}><li>Home</li></Link>
+          <Link to="/library" onClick={toggleMenu}><li>Library</li></Link>
+          <Link to="/" onClick={toggleMenu}><li>Review Request</li></Link>
+          <Link to="/faq" onClick={toggleMenu}><li>FAQ</li></Link>
         </ul>
       </div>
 
