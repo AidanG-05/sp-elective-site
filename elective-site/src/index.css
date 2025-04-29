@@ -696,29 +696,26 @@ a:visited {
 
 
 @media (max-width: 768px) {
-  .hamburger-button {
-    margin: 0;
-    align-self: flex-start;
+  .split-container {
+    flex-direction: column;
+    align-items: center;
   }
 
-  .sidebar {
-    width: 200px;  /* Optionally reduce the sidebar width for mobile */
+  .left-side, .right-side {
+    width: 100%;
+    padding: 20px;
   }
 
-  .sidebar.open {
-    left: 0;
+  .main-button {
+    width: 100%;
+  }
+
+  .notice-board {
+    width: 90%;
   }
 
   .nav-container {
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 10px 20px;
+    flex-direction:row;
+    gap: 10px;
   }
-
-  .search-bar {
-    width: 100%;
-    justify-content: center;
-  }
-
-  
 }
