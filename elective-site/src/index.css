@@ -34,15 +34,13 @@ body, html {
 
 /* Button styling */
 .hamburger-button {
-  top: 16px;
-  left: 16px;
   z-index: 90;
   background: none;
   border: none;
   cursor: pointer;
   padding: 10px;
   margin-top: 0px;
-  margin-left: 20px
+  margin-left: 5px;
 }
 
 /* Hamburger lines */
@@ -124,10 +122,7 @@ body, html {
 .nav-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 5px;
-  width: 100%;
-  box-sizing: border-box;
+  justify-content: flex-start; 
 }
 
 .hamburger-container {
@@ -704,7 +699,7 @@ a:visited {
 
 
 
-@media (max-width: 650px) {
+@media (max-width: 768px) {
   .split-container {
     flex-direction: column;
     align-items: center;
@@ -720,21 +715,26 @@ a:visited {
   }
 
   .notice-board {
-    width: 80%;
+    width: 100%;
   }
 
   .nav-header {
-    flex-direction:row;
-    justify-content:space-between;
-    width: 100%;
-  }
-  
-  .searchbar-container {
-    flex-direction:row;
-    width: 80%;
+    flex-direction: row;
+    align-items: stretch;
   }
 
   .hamburger-container {
-    flex-direction:row;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .searchbar-container {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .search-bar {
+    width: 90%;
+    max-width: 100%;
   }
 }
