@@ -720,21 +720,23 @@ a:visited {
 
   .nav-header {
     flex-direction: row;
+    justify-content: flex-start;
     align-items: stretch;
   }
 
   .hamburger-container {
     display: flex;
     justify-content: flex-start;
+    width: 15%;
   }
 
   .searchbar-container {
-    width: 80%;
-    justify-content: center;
+    width: 100%;
+    justify-content: flex-start;
   }
 
   .search-bar {
-    width: 80%;
+    width: 90%;
     max-width: 100%;
   }
 }
