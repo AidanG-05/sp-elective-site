@@ -121,14 +121,24 @@ body, html {
 }
 
 
-
-.nav-container {
-  display:flex;
-  justify-content:space-between;
+.nav-header {
+  display: flex;
   align-items: center;
-  gap: 5px;
-  height:20%;
-  margin-top:20px;
+  justify-content: space-between;
+  padding: 10px 15px;
+  gap: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.hamburger-container {
+  flex-shrink: 0;
+}
+
+.searchbar-container {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
 }
 
 .title-container {
@@ -714,7 +724,7 @@ a:visited {
     width: 80%;
   }
 
-  .nav-container {
+  .nav-header {
     flex-direction:row;
     justify-content:space-between;
   }

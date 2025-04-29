@@ -20,9 +20,15 @@ function Home() {
   const feedbackForm = <a href="https://docs.google.com/forms/d/e/1FAIpQLScHg9gzqM4gAj1GHQUvyW7Wsrl0GcTtSI2ZXoSFa5kaw_KHNQ/viewform?usp=dialog" style={{ color: '#e34066', fontWeight:'bold', textDecoration: 'underline'}}>Here</a>
   return (
     <>
-      <div className="nav-container">
+    <div className="nav-header">
+      <div className="hamburger-container">
+        <Hamburger />
+      </div>
+      
+      <div className="searchbar-container">
         <SearchBar />
       </div>
+    </div>
 
       <div className="title-container">
         <Title />
