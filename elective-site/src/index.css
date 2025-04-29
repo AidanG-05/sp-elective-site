@@ -125,6 +125,7 @@ body, html {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 5px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -725,9 +726,11 @@ a:visited {
   .nav-header {
     flex-direction:row;
     justify-content:space-between;
+    width: 100%;
   }
   
   .searchbar-container {
+    flex-direction:row;
     width: 80%;
   }
 
