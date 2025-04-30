@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import ModuleCard from "./components/moduleCard";
 import Hamburger from "./components/hamburger";
 import SearchBar from "./components/searchBar";
+import Footer from "./components/footer";
 
 
 function SearchResults() {
@@ -45,6 +46,9 @@ function SearchResults() {
         )}
       </div>
     </div>
+    <div className="footer-container">
+        <Footer />
+      </div>
     </>
   );
 }

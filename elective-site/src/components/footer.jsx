@@ -5,7 +5,7 @@ function Footer() {
     const DoverPoly = <a href="https://www.instagram.com/dover_poly?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" style={{ color: '#e34066', fontWeight:'bold' }}>Dover Poly Team</a>;
 
     return (
-        <footer>
+        <footer className="footer-text">
             Created by {aidan} • {theyan} • {DoverPoly}
         </footer>
     );

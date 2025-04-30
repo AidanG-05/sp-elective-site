@@ -1,5 +1,6 @@
 import Hamburger from "./components/hamburger";
 import SearchBar from "./components/searchBar";
+import Footer from "./components/footer";
 
 function FAQ() {
   const faqs = [
@@ -52,7 +53,7 @@ function FAQ() {
     </div>
 
       <div className="faq-page">
-        <h1 className="faq-title">Frequently Asked Questions</h1>
+        <h1 className="faq-title">FAQ</h1>
         <div className="faq-list">
           {faqs.map((faq, index) => (
             <div className="faq-item" key={index}>
@@ -61,6 +62,9 @@ function FAQ() {
             </div>
           ))}
         </div>
+      </div>
+      <div className="footer-container">
+        <Footer />
       </div>
     </>
   );

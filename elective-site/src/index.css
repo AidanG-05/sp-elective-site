@@ -773,4 +773,21 @@ a:visited {
     font-family: 'Poppins';
     font-size: 15px
   }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto; /* center horizontally */
+    padding: 0 1rem; /* optional small padding on sides */
+  }
+}
+
+
+@media (max-width: 450px) {
+  footer {
+    font-family: 'Poppins';
+    font-size: 12px
+  }
 }
