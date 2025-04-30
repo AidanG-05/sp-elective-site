@@ -14,10 +14,13 @@ function ModuleDetails() {
     const [module, setModule] = useState();
     const [reviews, setReviews] = useState([]);
     const [selectedReview, setSelectedReview] = useState(null);
+    const [avgRating, setAvgRating] = useState(null);
+    
+    const API = import.meta.env.VITE_LOCAL_API;
 
     useEffect(() => {
         console.log("Fetching module for:", module_code);
-        fetch(`https://sp-elective-site-backend-production.up.railway.app/modules/${module_code}`)
+        fetch(`${API}/modules/${module_code}`)
             .then((res) => res.json())
             .then((data) => {
                 console.log("Fetched data:", data);
@@ -25,11 +28,17 @@ function ModuleDetails() {
             })
             .catch((err) => console.error("Error fetching module details:", err));
 
-        fetch(`https://sp-elective-site-backend-production.up.railway.app/modules/${module_code}/reviews`)
+        fetch(`${API}/modules/${module_code}/reviews`)
             .then((res) => res.json())
             .then((data) => {
                 console.log("Fetched reviews:", data);
                 setReviews(data);
+
+                const ratings = data.map(r => parseFloat(r.Ratings)).filter(r => !isNaN(r));
+                const average = ratings.length > 0
+                  ? (ratings.reduce((sum, r) => sum + r, 0) / ratings.length).toFixed(1)
+                  : null;
+                setAvgRating(average);
             })
             .catch((err) => console.error("Error fetching reviews:", err));
     }, [module_code]);
@@ -49,6 +58,13 @@ function ModuleDetails() {
                 <h2>{module.module_code}</h2>
                 <p><strong>Eligibility:</strong> {module.eligibility}</p>
                 <p><strong>Duration:</strong> {module.duration}</p>
+                {avgRating ? (
+                    <>
+                    <p><strong>Overall Rating:</strong> {avgRating} / 5</p>
+                    </>
+                ) : (
+                    <p><strong>Overall Rating:</strong> No ratings yet</p>
+                )}
                 <div className="review-button-wrapper">
                     <ClickButton title="Review 📝" navigateTo="/review"/>
                 </div>

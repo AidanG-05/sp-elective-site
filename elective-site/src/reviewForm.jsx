@@ -25,12 +25,25 @@ function ReviewForm() {
     Rating_Reason: 'Why did you give this rating?',
     TLDR_experiences: 'Summarize your experience in this module.',
     Assignment_Review: 'How were the assignments? Easy, hard, or group projects?',
-    Assignment_Weightage: 'What was the assignment weightage like (if any)?',
+    Assignment_Weightage: 'What was the assignment weightage like (Example:  CA1:10%  Group Project:30%  CA2:20%  CA3:20%  Lab Tests:20%)?',
     Life_Hacks: 'Any tips/tricks/life hacks for future students?'
   };
 
+  const formFieldOrder = [
+    'Academic_Year',
+    'Semester',
+    'Ratings',
+    'Rating_Reason',
+    'TLDR_experiences',
+    'Assignment_Weightage',
+    'Assignment_Review',
+    'Life_Hacks'
+  ];
+
+  const API = import.meta.env.VITE_LOCAL_API; 
+
   useEffect(() => {
-    fetch('https://sp-elective-site-backend-production.up.railway.app/modules/all')
+    fetch(`${API}/modules/all`)
       .then(res => res.json())
       .then(data => setModules(data))
       .catch(err => console.error('Error fetching modules:', err));
@@ -69,15 +82,55 @@ function ReviewForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!selectedModule) return alert('Please select a module.');
+    if (!selectedModule) {
+      alert('Please select a module.');
+      return;
+    }
+  
+    const trimmedFormData = Object.fromEntries(
+      Object.entries(formData).map(([key, val]) => [key, typeof val === 'string' ? val.trim() : val])
+    );
+  
+    // Validate dropdowns
+    if (
+      trimmedFormData.Academic_Year === '' ||
+      trimmedFormData.Academic_Year === '-- Select Academic Year --'
+    ) {
+      alert('Please select a valid academic year.');
+      return;
+    }
 
+    // Validate dropdowns
+    if (
+      trimmedFormData.Semester === '' ||
+      trimmedFormData.Semester === '-- Select Semester --'
+    ) {
+      alert('Please select a valid semester.');
+      return;
+    }
+  
+    // Validate Ratings
+    if (!trimmedFormData.Ratings || isNaN(trimmedFormData.Ratings) || trimmedFormData.Ratings < 1) {
+      alert('Please provide a rating.');
+      return;
+    }
+  
+    // Check if all textarea fields are filled (not just whitespace)
+    const requiredFields = ['Rating_Reason', 'TLDR_experiences', 'Assignment_Review', 'Assignment_Weightage', 'Life_Hacks'];
+    for (let field of requiredFields) {
+      if (!trimmedFormData[field] || trimmedFormData[field] === '') {
+        alert(`Please fill in the "${fieldLabels[field]}" field.`);
+        return;
+      }
+    }
+  
     const payload = {
-      ...formData,
+      ...trimmedFormData,
       Elective_Code: selectedModule.module_code,
-      Elective_Module: selectedModule.module_name
+      Elective_Module: selectedModule.module_name,
     };
-
-    fetch(`https://sp-elective-site-backend-production.up.railway.app/review/submission`, {
+  
+    fetch(`${API}/review/submission`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
@@ -89,11 +142,14 @@ function ReviewForm() {
         }
         return res.json();
       })
-      .then(() => {navigate('/thankyou');})
+      .then(() => {
+        navigate('/thankyou');
+      })
       .catch(err => {
         console.error('Error submitting review:', err);
       });
   };
+  
 
   return (
     <div className="reviewForm-container">
@@ -149,63 +205,63 @@ function ReviewForm() {
       <section className="reviewForm-formBox">
         <h2 className="reviewForm-subTitle"></h2>
         <form onSubmit={handleSubmit} className="reviewForm-form">
-          {Object.entries(formData).map(([field, value]) => (
-            <div key={field} className="reviewForm-field">
-              <label htmlFor={field} className="reviewForm-label">
-                {fieldLabels[field]}
-              </label>
+        {formFieldOrder.map((field) => (
+          <div key={field} className="reviewForm-field">
+            <label htmlFor={field} className="reviewForm-label">
+              {fieldLabels[field]}
+            </label>
 
-              {field === 'Academic_Year' ? (
-                <select
-                  id={field}
-                  name={field}
-                  className="reviewForm-input"
-                  value={value}
-                  onChange={handleChange}
-                >
-                  <option value="">-- Select Academic Year --</option>
-                  {Array.from({ length: 8 }).map((_, index) => {
-                    const startYear = 2018 + index;
-                    const endYear = startYear + 1;
-                    const ay = `AY ${startYear}/${endYear}`;
-                    return (
-                      <option key={ay} value={ay}>
-                        {ay}
-                      </option>
-                    );
-                  })}
-                </select>
-              ) : field === 'Semester' ? (
-                <select
-                  id={field}
-                  name={field}
-                  className="reviewForm-input"
-                  value={value}
-                  onChange={handleChange}
-                >
-                  <option value="">-- Select Semester --</option>
-                  <option value="Sem 1 (April - Aug)">Sem 1 (April - Aug)</option>
-                  <option value="Sem 2 (Oct - Feb)">Sem 2 (Oct - Feb)</option>
-                </select>
-              ) : field === 'Ratings' ? (
-                <StarRating
-                  value={Number(value)}
-                  onChange={(val) =>
-                    setFormData((prev) => ({ ...prev, Ratings: val }))
-                  }
-                />
-              ) : (
-                <textarea
-                  id={field}
-                  name={field}
-                  className="reviewForm-textarea"
-                  value={value}
-                  onChange={handleChange}
-                  rows={['Rating_Reason', 'Life_Hacks'].includes(field) ? 4 : 2}
-                />
-              )}
-            </div>
-          ))}
+            {field === 'Academic_Year' ? (
+              <select
+                id={field}
+                name={field}
+                className="reviewForm-input"
+                value={formData[field]}
+                onChange={handleChange}
+              >
+                <option value="">-- Select Academic Year --</option>
+                {Array.from({ length: 8 }).map((_, index) => {
+                  const startYear = 2018 + index;
+                  const endYear = startYear + 1;
+                  const ay = `AY ${startYear}/${endYear}`;
+                  return (
+                    <option key={ay} value={ay}>
+                      {ay}
+                    </option>
+                  );
+                })}
+              </select>
+            ) : field === 'Semester' ? (
+              <select
+                id={field}
+                name={field}
+                className="reviewForm-input"
+                value={formData[field]}
+                onChange={handleChange}
+              >
+                <option value="">-- Select Semester --</option>
+                <option value="Sem 1 (April - Aug)">Sem 1 (April - Aug)</option>
+                <option value="Sem 2 (Oct - Feb)">Sem 2 (Oct - Feb)</option>
+              </select>
+            ) : field === 'Ratings' ? (
+              <StarRating
+                value={Number(formData[field])}
+                onChange={(val) =>
+                  setFormData((prev) => ({ ...prev, Ratings: val }))
+                }
+              />
+            ) : (
+              <textarea
+                id={field}
+                name={field}
+                className="reviewForm-textarea"
+                value={formData[field]}
+                onChange={handleChange}
+                rows={['Rating_Reason', 'Life_Hacks'].includes(field) ? 4 : 2}
+              />
+            )}
+          </div>
+        ))}
           <button type="submit" className="reviewForm-submitBtn">
             Submit Review
           </button>

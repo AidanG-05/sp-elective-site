@@ -10,12 +10,13 @@ function SearchResults() {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const searchTerm = queryParams.get("q");
+  const API = import.meta.env.VITE_LOCAL_API;
 
   useEffect(() => {
     if (!searchTerm) return;
 
     // Fetch matching modules from your backend
-    fetch(`https://sp-elective-site-backend-production.up.railway.app/modules/search?q=${encodeURIComponent(searchTerm)}`)
+    fetch(`${API}/modules/search?q=${encodeURIComponent(searchTerm)}`)
       .then((res) => res.json())
       .then((data) => setResults(data))
       .catch((err) => console.error("Error fetching search results:", err));

@@ -5,9 +5,10 @@ import SearchBar from "./components/searchBar";
 
 function ModuleList() {
     const [modules, setModules] = useState([]); // State for storing modules
+    const API = import.meta.env.VITE_LOCAL_API; 
 
     useEffect(() => {
-        fetch("https://sp-elective-site-backend-production.up.railway.app/modules/all") // Fetch from backend
+        fetch(`${API}/modules/all`) // Fetch from backend
             .then((res) => res.json())
             .then((data) => setModules(data)) // Store modules in state
             .catch((err) => console.error("Error fetching modules:", err));
