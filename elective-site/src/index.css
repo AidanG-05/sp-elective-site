@@ -17,6 +17,35 @@ body, html {
   
 }
 
+.nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* for spacing between hamburger and search */
+  padding: 0.5rem 1rem;
+  flex-wrap: nowrap;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.hamburger-container {
+  flex: 0 0 auto; /* fixed size, no grow */
+}
+
+.searchbar-container {
+  flex: 1 1 auto; /* allow to grow and shrink */
+  display: flex;
+  justify-content: center;
+  padding: 0 1rem;
+  min-width: 0; /* prevent overflow */
+}
+
+.searchbar-container input {
+  width: 100%;
+  max-width: 500px;
+  min-width: 0;
+}
+
+
 .click-button {
   padding:8px 16px;
   border: none;

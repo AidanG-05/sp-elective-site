@@ -11,6 +11,12 @@ function SearchBar() {
     navigate(`/results?q=${encodeURIComponent(query)}`);
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  };
+
   return (
     <div className="search-bar">
       <input
@@ -18,8 +24,8 @@ function SearchBar() {
         placeholder="Search by module code or name..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
+        onKeyDown={handleKeyDown}
       />
-      <button onClick={handleSearch}>🔍</button>
     </div>
   );
 }
