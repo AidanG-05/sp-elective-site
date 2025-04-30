@@ -53,7 +53,6 @@ function Home() {
         <div className="right-side">
           <div className="notice-board">
             <h2>Notice Board</h2>
-            <p>📝 Currently Under Construction</p>
             <p>📢 Please give us your feedback {feedbackForm}</p>
           </div>
         </div>
