@@ -10,7 +10,7 @@ function SearchResults() {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const searchTerm = queryParams.get("q");
-  const API = import.meta.env.VITE_LOCAL_API;
+  const API = import.meta.env.VITE_HOST_API;
 
   useEffect(() => {
     if (!searchTerm) return;

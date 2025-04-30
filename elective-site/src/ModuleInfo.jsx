@@ -16,7 +16,7 @@ function ModuleDetails() {
     const [selectedReview, setSelectedReview] = useState(null);
     const [avgRating, setAvgRating] = useState(null);
     
-    const API = import.meta.env.VITE_LOCAL_API;
+    const API = import.meta.env.VITE_HOST_API;
 
     useEffect(() => {
         console.log("Fetching module for:", module_code);

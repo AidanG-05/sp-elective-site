@@ -40,7 +40,7 @@ function ReviewForm() {
     'Life_Hacks'
   ];
 
-  const API = import.meta.env.VITE_LOCAL_API; 
+  const API = import.meta.env.VITE_HOST_API; 
 
   useEffect(() => {
     fetch(`${API}/modules/all`)

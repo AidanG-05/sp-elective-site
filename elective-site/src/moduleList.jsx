@@ -5,7 +5,7 @@ import SearchBar from "./components/searchBar";
 
 function ModuleList() {
     const [modules, setModules] = useState([]); // State for storing modules
-    const API = import.meta.env.VITE_LOCAL_API; 
+    const API = import.meta.env.VITE_HOST_API; 
 
     useEffect(() => {
         fetch(`${API}/modules/all`) // Fetch from backend
