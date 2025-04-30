@@ -768,4 +768,9 @@ a:visited {
     width: 90%;
     max-width: 100%;
   }
+
+  footer {
+    font-family: 'Poppins';
+    font-size: 15px
+  }
 }

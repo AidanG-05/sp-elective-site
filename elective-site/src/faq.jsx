@@ -41,10 +41,15 @@ function FAQ() {
 
   return (
     <>
-      <div className="nav-container">
+      <div className="nav-header">
+      <div className="hamburger-container">
         <Hamburger />
+      </div>
+      
+      <div className="searchbar-container">
         <SearchBar />
       </div>
+    </div>
 
       <div className="faq-page">
         <h1 className="faq-title">Frequently Asked Questions</h1>

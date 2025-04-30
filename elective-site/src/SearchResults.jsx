@@ -24,9 +24,14 @@ function SearchResults() {
 
   return (
     <>
-    <div className="nav-container">
-      <Hamburger />
-      <SearchBar />
+    <div className="nav-header">
+      <div className="hamburger-container">
+        <Hamburger />
+      </div>
+      
+      <div className="searchbar-container">
+        <SearchBar />
+      </div>
     </div>
     <div className="search-results">
       <h1 className="centered-text">Search Results for "{searchTerm}"</h1>

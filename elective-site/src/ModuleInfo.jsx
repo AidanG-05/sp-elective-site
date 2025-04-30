@@ -47,10 +47,15 @@ function ModuleDetails() {
 
     return (
         <>
-        <div className="nav-container">
-            <Hamburger />
-            <SearchBar />
-        </div>
+        <div className="nav-header">
+      <div className="hamburger-container">
+        <Hamburger />
+      </div>
+      
+      <div className="searchbar-container">
+        <SearchBar />
+      </div>
+    </div>
         <div className="page-container">
             {/* Module info */}
             <div className="module-details">

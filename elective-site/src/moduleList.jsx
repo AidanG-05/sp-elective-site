@@ -16,10 +16,15 @@ function ModuleList() {
 
     return (
         <>
-        <div className="nav-container">
-            <Hamburger />
-            <SearchBar />
-        </div>
+        <div className="nav-header">
+      <div className="hamburger-container">
+        <Hamburger />
+      </div>
+      
+      <div className="searchbar-container">
+        <SearchBar />
+      </div>
+    </div>
         <div className="module-list">
             <h1 className="centered-text">All Modules</h1>
             <div className="module-container">
