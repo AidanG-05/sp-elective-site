@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Hamburger from './components/hamburger';
+import SearchBar from './components/searchBar';
 
 function ReviewForm() {
   const navigate = useNavigate();
@@ -152,6 +154,16 @@ function ReviewForm() {
   
 
   return (
+    <>
+    <div className="nav-header">
+      <div className="hamburger-container">
+        <Hamburger />
+      </div>
+      
+      <div className="searchbar-container">
+        <SearchBar />
+      </div>
+    </div>
     <div className="reviewForm-container">
       <section className="reviewForm-moduleBox">
         <h1 className="reviewForm-title">Submit a Module Review</h1>
@@ -268,6 +280,7 @@ function ReviewForm() {
         </form>
       </section>
     </div>
+    </>
   );
 }
 

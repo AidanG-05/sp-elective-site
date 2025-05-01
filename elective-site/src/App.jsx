@@ -13,6 +13,7 @@ import ModuleInfo from "./ModuleInfo";
 import ReviewForm from "./reviewForm";
 import ThankYouPage from "./ThankYouPage";
 import FAQ from "./faq";
+import ReviewRequest from "./reviewRequest";
 
 // Home component renders the main UI
 function Home() {
@@ -82,6 +83,7 @@ function App() {
         <Route path="/review" element={<ReviewForm />} />
         <Route path="/thankyou" element={<ThankYouPage />} />
         <Route path="/faq" element={<FAQ />} />
+        <Route path="/reviewRequest" element={<ReviewRequest></ReviewRequest>} />
       </Routes>
     </Router>
   );
