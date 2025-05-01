@@ -832,4 +832,12 @@ a:visited {
     padding-left:7px;
     padding-right:7px;
   }
+
+  .title {
+    margin-top:50px;
+    font-family:'Poppins';
+    font-size: 50px;
+    text-align: center;
+    color: #e34066;
+  }
 }

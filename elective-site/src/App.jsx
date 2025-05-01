@@ -18,6 +18,8 @@ import FAQ from "./faq";
 function Home() {
 
   const feedbackForm = <a href="https://docs.google.com/forms/d/e/1FAIpQLScHg9gzqM4gAj1GHQUvyW7Wsrl0GcTtSI2ZXoSFa5kaw_KHNQ/viewform?usp=dialog" style={{ color: '#e34066', fontWeight:'bold', textDecoration: 'underline'}}>Here</a>
+  const donation = <a href="https://ko-fi.com/spelectivereviews" style={{ color: '#e34066', fontWeight:'bold', textDecoration: 'underline'}}>Donating</a>
+
   return (
     <>
     <div className="nav-header">
@@ -54,6 +56,7 @@ function Home() {
           <div className="notice-board">
             <h2>Notice Board</h2>
             <p>📢 Please give us your feedback {feedbackForm}</p>
+            <p>🗒️ If you want to support us, please consider {donation}</p>
           </div>
         </div>
       </div>
