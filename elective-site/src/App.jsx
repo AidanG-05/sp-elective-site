@@ -17,7 +17,7 @@ import ReviewRequest from "./reviewRequest";
 
 // Home component renders the main UI
 function Home() {
-
+  
   const feedbackForm = <a href="https://docs.google.com/forms/d/e/1FAIpQLScHg9gzqM4gAj1GHQUvyW7Wsrl0GcTtSI2ZXoSFa5kaw_KHNQ/viewform?usp=dialog" style={{ color: '#e34066', fontWeight:'bold', textDecoration: 'underline'}}>Here</a>
   const donation = <a href="https://ko-fi.com/spelectivereviews" style={{ color: '#e34066', fontWeight:'bold', textDecoration: 'underline'}}>Donating</a>
 
