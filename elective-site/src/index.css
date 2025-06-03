@@ -913,3 +913,26 @@ select {
 .reviewForm-wordCount.invalid {
   color: red;
 }
+
+
+
+
+.reviewForm-input,
+.reviewForm-textarea,
+.reviewForm-dropdownItem,
+.reviewForm-submitBtn,
+.reviewForm-label,
+select {
+  font-size: 16px !important;
+}
+
+.reviewForm-wordCount {
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+.reviewForm-wordCount.valid {
+  color: green;
+}
+.reviewForm-wordCount.invalid {
+  color: red;
+}
