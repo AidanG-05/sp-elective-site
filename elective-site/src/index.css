@@ -13,14 +13,61 @@ body, html {
 #root {
   display: flex;
   flex-direction: column;
-  height: 100vh; /* Full viewport height */
+  height: 100vh; 
   
+}
+
+
+/* review sort on mod info page */
+.sort-container {
+  display: flex;
+  justify-content: flex-start;  
+  align-items: center;
+  padding: 12px 20px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  margin-top: 20px;
+  gap: 12px;
+  
+  width: max-content;  
+  margin-right: auto;   
+  box-sizing: border-box;
+}
+
+
+.sort-dropdown {
+  padding: 10px 16px;        
+  border: none;
+  background-color: #669bbc;
+  color: white;
+  font-size: 14px;           
+  border-radius: 6px;          
+  cursor: pointer;
+  transition: background 0.3s ease;
+  white-space: nowrap;
+  font-family: 'Poppins', sans-serif;
+  width: auto;                
+  align-self: center;
+  appearance: none;  
+}
+
+.sort-dropdown:focus {
+  outline: none;
+  background-color: #557a95;  
+}
+
+.sort-dropdown:hover {
+  background-color: #5a8ab1; 
+}
+
+.sort-dropdown:active {
+  background-color: #4b7899; 
 }
 
 .nav-header {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* for spacing between hamburger and search */
+  justify-content: space-between; 
   padding: 0.5rem 1rem;
   flex-wrap: nowrap;
   max-width: 100%;
@@ -840,6 +887,9 @@ a:visited {
     text-align: center;
     color: #e34066;
   }
+
+
+  
 }
 
 

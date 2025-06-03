@@ -8,7 +8,11 @@ import Hamburger from "./components/hamburger";
 import SearchBar from "./components/searchBar";
 import ClickButton from "./components/clickButton";
 
+
+
 function ModuleDetails() {
+
+    
     // Get module code from URL
     const { module_code } = useParams(); 
     const [module, setModule] = useState();
@@ -17,6 +21,17 @@ function ModuleDetails() {
     const [avgRating, setAvgRating] = useState(null);
     
     const API = import.meta.env.VITE_HOST_API;
+
+    const [sortOption, setSortOption] = useState("newest");
+
+// Sorting logic
+const sortedReviews = [...reviews].sort((a, b) => {
+    if (sortOption === "highest") return parseFloat(b.Ratings) - parseFloat(a.Ratings);
+    if (sortOption === "lowest") return parseFloat(a.Ratings) - parseFloat(b.Ratings);
+    if (sortOption === "newest") return new Date(b.review_timestamp) - new Date(a.review_timestamp);
+    return 0;
+});
+    
 
     useEffect(() => {
         console.log("Fetching module for:", module_code);
@@ -75,16 +90,33 @@ function ModuleDetails() {
                 </div>
             </div>
 
+            <div className="sort-container">
+                <label htmlFor="sort">Sort by: </label>
+                <select
+                    id="sort"
+                    className="sort-dropdown"
+                    value={sortOption}
+                    onChange={(e) => setSortOption(e.target.value)}
+                >
+                    <option value="newest">Newest</option>
+                    <option value="highest">Rating: Highest</option>
+                    <option value="lowest">Rating: Lowest</option>
+                </select>
+            </div>
+
+
+            
             {/* Reviews section */}
             <div className="reviews-container">
                 <h2>Reviews</h2>
-                {reviews.length > 0 ? (
-                    reviews.map((review) => (
+                {sortedReviews.length > 0 ? (
+                    sortedReviews.map((review) => (
                         <ReviewCard key={review.id} review={review} onClick={setSelectedReview}/>
-                    ))
+                     ))
                 ) : (
                     <p>No reviews yet.</p>
                 )}
+
             </div>
              {/* Modal */}
              <ReviewModal review={selectedReview} onClose={() => setSelectedReview(null)} />
