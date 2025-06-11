@@ -143,6 +143,14 @@ function ReviewForm() {
     const vowelRatio = vowelCount / (letterCount || 1);
     if (vowelRatio < 0.2 && text.length > 100) score += 2;
 
+    const upperCount = (text.match(/[A-Z]/g) || []).length;
+    const upperRatio = upperCount / (letterCount || 1);
+    if (upperRatio > 0.8 && text.length > 50) score += 2;
+    if (vowelRatio < 0.25 && text.length > 50) score += 2;
+    if (nonsenseRatio > 0.7 && wordCount > 10) score += 2;
+    const likelyGibberish = wordArray.filter(w => /[^aeiou]{5,}/i.test(w)).length;
+    if (likelyGibberish / wordCount > 0.4 && wordCount > 10) score += 2;
+
     return score >= 3;
   };
 
@@ -192,10 +200,12 @@ function ReviewForm() {
         return;
       }
 
-      const minWordCount = ['Life_Hacks', 'Rating_Reason'].includes(field) ? 20 : 50;
-      if (field !== 'Assignment_Weightage' && wordCount < minWordCount) {
-        alert(`The "${fieldLabels[field]}" field must be at least ${minWordCount} words.`);
-        return;
+      if (field !== 'Assignment_Weightage') {
+        const minWordCount = ['Life_Hacks', 'Rating_Reason'].includes(field) ? 20 : 50;
+        if (wordCount < minWordCount) {
+          alert(`The "${fieldLabels[field]}" field must be at least ${minWordCount} words.`);
+          return;
+        }
       }
     }
 
