@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Hamburger from './components/hamburger';
 import SearchBar from './components/searchBar';
+import useEnglishWords from './hook/wordsE'
+
+
 
 function ReviewForm() {
   const navigate = useNavigate();
@@ -20,6 +23,7 @@ function ReviewForm() {
   });
   const [wordCounts, setWordCounts] = useState({});
   const [showDropdown, setShowDropdown] = useState(false);
+  const englishWords = useEnglishWords(); 
 
   const fieldLabels = {
     Academic_Year: 'Which academic year did you take this module in?',
@@ -128,28 +132,15 @@ function ReviewForm() {
     const numberDensity = (text.match(/\d/g) || []).length / text.length;
     const symbolDensity = (text.match(/[^\w\s]/g) || []).length / text.length;
 
-    if (numberDensity > 0.4 && text.length > 19) score += 2;
-    if (symbolDensity > 0.3 && text.length > 19) score += 2;
-
-    if (letterRatio < 0.3 && text.length > 19) score += 2;
+    if (numberDensity > 0.45 && text.length > 19) score += 2;
+    if (symbolDensity > 0.35 && text.length > 19) score += 2;
+    if (letterRatio < 0.25 && text.length > 19) score += 2;
 
     const shortWordRatio = wordArray.filter(w => w.length <= 3).length / wordCount;
     if (shortWordRatio > 0.6 && wordCount > 19) score += 2;
 
-    const nonsenseRatio = wordArray.filter(w => !/^[a-z]{3,}$/i.test(w)).length / wordCount;
-    if (nonsenseRatio > 0.5 && wordCount > 19) score += 2;
-
-    const vowelCount = (text.match(/[aeiou]/gi) || []).length;
-    const vowelRatio = vowelCount / (letterCount || 1);
-    if (vowelRatio < 0.2 && text.length > 100) score += 2;
-
-    const upperCount = (text.match(/[A-Z]/g) || []).length;
-    const upperRatio = upperCount / (letterCount || 1);
-    if (upperRatio > 0.8 && text.length > 50) score += 2;
-    if (vowelRatio < 0.25 && text.length > 50) score += 2;
-    if (nonsenseRatio > 0.7 && wordCount > 10) score += 2;
-    const likelyGibberish = wordArray.filter(w => /[^aeiou]{5,}/i.test(w)).length;
-    if (likelyGibberish / wordCount > 0.4 && wordCount > 10) score += 2;
+    const invalidEnglishRatio = wordArray.filter(w => !englishWords.has(w.toLowerCase())).length / wordCount;
+    if (invalidEnglishRatio > 0.7 && wordCount > 10) score += 3;
 
     return score >= 3;
   };
