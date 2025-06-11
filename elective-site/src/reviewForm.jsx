@@ -91,6 +91,61 @@ function ReviewForm() {
     );
   };
 
+  const invalidText = (text) => {
+    const wordArray = text.trim().split(/\s+/);
+    const wordCount = wordArray.length;
+    const uniqueWords = new Set(wordArray.map(w => w.toLowerCase()));
+    const uniqueRatio = uniqueWords.size / wordCount;
+    const letterCount = (text.match(/[a-zA-Z]/g) || []).length;
+    const nonLetterCount = (text.match(/[^a-zA-Z\s]/g) || []).length;
+    const letterRatio = letterCount / (letterCount + nonLetterCount + 1);
+    let score = 0;
+
+    if (/(\b\w+\b)(\s+\1){2,}/i.test(text)) score += 2;
+    if (/(\b\w\b\s*){6,}/i.test(text)) score += 2;
+    if (/([a-zA-Z]\s){6,}[a-zA-Z]/.test(text)) score += 2;
+    if (/([^\w\s]{2,}[\s]*){3,}/.test(text)) score += 2;
+    if (letterRatio < 0.1 && text.length > 30) score += 2;
+
+    if (wordCount > 19 && uniqueRatio < 0.25) score += 1;
+    if (text.length > 300 && uniqueRatio < 0.2) score += 1;
+
+    const sentenceArray = text
+      .split(/[.!?]+/)
+      .map(s => s.trim().toLowerCase())
+      .filter(s => s.length > 10);
+
+    const sentenceCounts = {};
+    for (const sentence of sentenceArray) {
+      sentenceCounts[sentence] = (sentenceCounts[sentence] || 0) + 1;
+    }
+
+    const maxRepeats = Math.max(...Object.values(sentenceCounts), 0);
+    const repeatedSentences = Object.values(sentenceCounts).filter(c => c > 1).length;
+
+    if (maxRepeats > 3 || repeatedSentences >= 2) score += 3;
+
+    const numberDensity = (text.match(/\d/g) || []).length / text.length;
+    const symbolDensity = (text.match(/[^\w\s]/g) || []).length / text.length;
+
+    if (numberDensity > 0.4 && text.length > 19) score += 2;
+    if (symbolDensity > 0.3 && text.length > 19) score += 2;
+
+    if (letterRatio < 0.3 && text.length > 19) score += 2;
+
+    const shortWordRatio = wordArray.filter(w => w.length <= 3).length / wordCount;
+    if (shortWordRatio > 0.6 && wordCount > 19) score += 2;
+
+    const nonsenseRatio = wordArray.filter(w => !/^[a-z]{3,}$/i.test(w)).length / wordCount;
+    if (nonsenseRatio > 0.5 && wordCount > 19) score += 2;
+
+    const vowelCount = (text.match(/[aeiou]/gi) || []).length;
+    const vowelRatio = vowelCount / (letterCount || 1);
+    if (vowelRatio < 0.2 && text.length > 100) score += 2;
+
+    return score >= 3;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!selectedModule) {
@@ -132,11 +187,22 @@ function ReviewForm() {
         return;
       }
 
+      if (invalidText(value)) {
+        alert(`Please avoid spamming or repeating letters/phrases in the "${fieldLabels[field]}" field.`);
+        return;
+      }
+
       const minWordCount = ['Life_Hacks', 'Rating_Reason'].includes(field) ? 20 : 50;
       if (field !== 'Assignment_Weightage' && wordCount < minWordCount) {
         alert(`The "${fieldLabels[field]}" field must be at least ${minWordCount} words.`);
         return;
       }
+    }
+
+    const hpValue = e.target.website?.value;
+    if (hpValue && hpValue.trim() !== '') {
+      console.warn('Bot Detected.');
+      return;
     }
 
     const payload = {
@@ -298,6 +364,7 @@ function ReviewForm() {
                 )}
               </div>
             ))}
+            <input type="text" name="website" style={{ display: 'none' }} autoComplete="off" tabIndex="-1"/>
             <button type="submit" className="reviewForm-submitBtn">
               Submit Review
             </button>
