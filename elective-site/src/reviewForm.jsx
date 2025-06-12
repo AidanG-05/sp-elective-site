@@ -2,7 +2,21 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Hamburger from './components/hamburger';
 import SearchBar from './components/searchBar';
-import useEnglishWords from './hook/wordsE'
+
+const useEnglishWords = () => {
+  const [englishWords, setEnglishWords] = useState(new Set());
+
+  useEffect(() => {
+    fetch('/words_alpha.txt')
+      .then(res => res.text())
+      .then(text => {
+        const words = text.split('\n').map(w => w.trim().toLowerCase());
+        setEnglishWords(new Set(words));
+      });
+  }, []);
+
+  return englishWords;
+};
 
 
 
